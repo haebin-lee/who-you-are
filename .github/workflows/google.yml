@@ -51,6 +51,12 @@ jobs:
           echo "GKE_ZONE: ${{ env.GKE_ZONE }}"
           echo "DEPLOYMENT_NAME: ${{ env.DEPLOYMENT_NAME }}"
 
+      - name: Replace Placeholders in deployement.yml
+        run: |
+          sed -i "s/PROJECT_ID/${{ env.PROJECT_ID }}/g" deployment.yml
+          sed -i "s/IMAGE/${{ env.IMAGE }}/g" deployment.yml
+          sed -i "s/TAG/${{ github.sha }}/g" deployment.yml
+
       # Configure Workload Identity Federation and generate an access token.
       # - id: 'auth'
       #   name: 'Authenticate to Google Cloud'

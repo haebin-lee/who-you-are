@@ -1,10 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
   labels:
     app: ala
-  name: ala-app-deployment
+  name: who-you-are-test
 spec:
   replicas: 2
   selector:
